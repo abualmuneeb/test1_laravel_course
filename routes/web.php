@@ -55,7 +55,7 @@ Auth::routes();
 
 
 
-Route::prefix('admin')->group(function(){
+Route::middleware(['auth'])->prefix('admin')->group(function(){
     Route::get('/course/add','CourseController@newCourse')->name('newcourse');
     Route::post('/course/add','CourseController@store')->name('postcourse');
     Route::get('/login','Auth\AdminLoginController@showLoginForm')->name('admin.login');
