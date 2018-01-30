@@ -13,9 +13,10 @@ class LessoncontentController extends Controller
     public function index($lessonid)
     {
         $lesson = Lesson::find($lessonid);
+        $course = $lesson->course;
         $lessoncontents = Lessoncontent::where('lesson_id',$lessonid)->get();
         $discussions = Discussion::where('lesson_id',$lessonid)->get();
-        return view('creative-gh-pages.user.lessoncontent.index',compact('lesson','lessoncontents','discussions'));        
+        return view('creative-gh-pages.user.lessoncontent.index',compact('lesson','course','lessoncontents','discussions'));        
         
     }
 

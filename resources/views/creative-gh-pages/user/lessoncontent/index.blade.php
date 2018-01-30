@@ -30,7 +30,7 @@
           <div class="card-footer">
               @if(count($lessoncontents)>0)
                 <a class=" circle2 btn btn-sm btn-info" href="{{route('lesson.index',$lesson->course->id)}}">رجوع</a>
-                @if($lessoncontent->user_id == Auth::user()->id)
+                @if($course->user_id == Auth::user()->id)
                 <a class="btn btn-success" href="{{route('lessoncontent.create',$lesson->id)}}">جديد</a>
                 @endif
                 <a class="btn btn-success" href="{{route('exercise.index',$lesson->id)}}">تمرين</a>
@@ -52,8 +52,8 @@
                   
                   <hr>
                 @endforeach
-                </div>
-                <div class="card-footer">
+                
+                
                     <form action="{{route('discussion.store')}}" method="post">
                       {{csrf_field()}}
                         <div class="form-group text-center">
@@ -62,10 +62,12 @@
                         <div class="form-group">
                             <input type="hidden" name="lessonid" value="{{$lesson->id}}">
                             <input type="hidden" name="userid" value="{{Auth::user()->id}}">
-                            <button type="submit"  class="btn btn-success">ارسال</button>
+                            <button type="submit"  class="btn btn-success btn-block">ارسال</button>
                         </div>
                     </form>
-                </div>
+                  </div>
+                  <div class="card-footer">
+                  </div>
             </div>
           @endif
       </div>
